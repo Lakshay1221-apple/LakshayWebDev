@@ -1,0 +1,67 @@
+/* --- General Body Styles --- */
+body {
+    background-color: pink;
+    text-align: center;
+}
+
+h1 {
+    color: darkcyan;
+    margin: 20px;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+
+.red {
+    color: red;
+    font-weight: bold;
+    font-family: serif
+}
+
+.green {
+    color: green;
+    font-weight: 300;
+    font-family:sans-serif
+}
+
+.blue {
+    color: blue;
+    font-weight: 300;
+    font-family: cursive;
+}
+
+
+#footer {
+    background-color: lightgray;
+    text-align: center;
+    padding: 10px;
+    font-family: "Times new roman", Times, serif;
+}
+
+
+#rem {
+    font-size: 1rem;
+    color: brown;
+    font-weight: lighter;
+    font-family: monospace
+}
+
+#em {
+    font-size: 1.5em;
+    color: purple;
+    font-family:fantasy;
+}
+
+html {
+    font-size: xx-large;
+ }
+
+#point{
+    font-size: 20pt;
+    color:orange;
+}
+
+#pixel{
+    font-size: 20px;
+    color: rgb(0, 139, 69);
+}

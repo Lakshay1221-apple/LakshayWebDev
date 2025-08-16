@@ -1,0 +1,58 @@
+/* Type Selectors */
+body {
+    background-color: lightcoral;
+    text-align:center;
+}
+
+h1 {
+    color: darkcyan;
+    margin: 20px;
+    padding: 20px;
+}
+
+h2 {   
+      color: red;
+}
+
+/* Class Selectors */
+.li1 {
+    color: purple;0
+    font-weight: normal;
+}
+
+.li2 {
+    color: rgb(79, 228, 9);
+    font-family : Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;  
+}
+
+.we {
+    background-color: peachpuff;
+    padding: 10px;
+    border-radius: 8px;
+    color: darkblue;
+}
+
+/* ID Selector */
+#main {
+    background-color: lightblue;
+}
+
+/* ✅ Attribute Selector Example */
+/* Styles any anchor tag with target="_blank" */
+a[target="_blank"] {
+    color: orange;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/*This is the universal selector which selects every element*/
+/* we call it by "*" */
+
+
+/* --- Clarification Comments --- */
+/* 'body', 'h1', etc. are Type Selectors */
+/* '.li1', '.li2' are Class Selectors */
+/* '#main' is an ID Selector */
+/* 'a[target="_blank"]' is an Attribute Selector */
