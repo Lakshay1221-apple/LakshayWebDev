@@ -1,0 +1,80 @@
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Cera CY', sans-serif; /* Use a similar-looking font from Google Fonts if Cera CY is not available */
+    color: #e0e0e0;
+    background-color: #000;
+}
+
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.logo1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.logo2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    position:absolute;
+    left:44px;
+    top:39px;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #e0e0e0;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+.main-nav a:hover {
+    color:purple;
+}
+
+
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 200px;
+    font-weight: bold;
+    margin: 0;
+    color: #fff;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #b0b0b0;
+}
