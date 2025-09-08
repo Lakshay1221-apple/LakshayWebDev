@@ -135,9 +135,9 @@ body, html {
 
 #head4 {
     position:absolute;
-    left:1200px;
+    right:280px;
     top:115px;
-    font-size:40px;
+    font-size:45px;
     letter-spacing: 0.3rem;
     font-weight: 900;
     padding:15px;

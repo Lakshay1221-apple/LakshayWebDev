@@ -110,9 +110,9 @@ body, html {
     align-items: center;
     position: relative;
     z-index: 5;
-    left:80px;
+    left:35px;
     top:450px;
-    font-size: 45px;    
+    font-size: 50px;    
     font-weight:900; 
 }
 
@@ -160,5 +160,5 @@ body, html {
 
 .complete {
     position:relative;
-    left:-80px;
+    left:-55px;
 }
