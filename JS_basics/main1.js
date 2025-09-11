@@ -612,7 +612,7 @@
 
 // let btn1 = document.querySelector("#btn1");
 
-// btn1.addEventListener("click", (evt) => {
+// btn1.addEventListener("click", (evt) => { // evt contains all the event details 
 //     console.log("btn1 was clicked handler-1");
 //     console.log(evt);
 //     console.log(evt.type);
