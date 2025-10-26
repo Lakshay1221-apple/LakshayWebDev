@@ -35,38 +35,37 @@
         id : "3",
         product: "Headphones",
         price: "$99"
-    },
+    } 
  ]
 
  const [message, setMessage] = useState('Click the button');
 
- const handlClick = () => setMessage('The button has been clicked');
+ const handleClick = () => setMessage('The button has been clicked');
 
 
    return (
      <div>
         <h1>This is our user List</h1>
-        <div>
-             {userList.map(({ id, name, age }) => {
-                const userProduct = ProductList.find(product => product.id === id);
-                return (
-                    <div key={id}>
-                        <ol>
-                            <li>ID : {id} , NAME : {name}, AGE: {age}</li>
-                        </ol>
-                        {userProduct && (
-                            <>
-                                <ul>
-                                    <li>Product: {userProduct.product}, Price: {userProduct.price}</li>
-                                </ul>
-                                <hr />
-                            </>
-                        )}
+        <ol>
+            {userList.map(({ id, name, age }) => {
+            const userProduct = ProductList.find(product => product.id === id);
+            return (
+                <li key={id}>
+                    <div>
+                        ID : {id} , NAME : {name}, AGE: {age}
                     </div>
-                );
-             })}
-        </div>
-        <button onClick={handlClick}>Click Me</button>
+                    {userProduct && (
+                        <>
+                            <ul>
+                                <li>Product: {userProduct.product}, Price: {userProduct.price}</li>
+                            </ul>
+                        </>
+                    )}
+                </li>
+            ); 
+            })}
+        </ol>
+        <button onClick={handleClick}>Click Me</button>
         {message && <h2>{message}</h2>}
      </div>
    )

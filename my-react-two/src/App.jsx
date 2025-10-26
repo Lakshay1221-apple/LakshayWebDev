@@ -14,6 +14,7 @@ import { BsEarbuds } from "react-icons/bs";
 import { MdOutlinePower } from "react-icons/md";
 import { BsSdCardFill } from "react-icons/bs";
 import { GiLoincloth } from "react-icons/gi";
+import Indec from "./components/Indec.jsx";
 
 
 // This is a component definition (which will act as a child when rendered)
@@ -74,6 +75,8 @@ const App = () => {
       <ProductInfo/>
       <hr/>
       <UserList/>
+      <hr/>
+      <Indec/>
       <hr/>
       <Password isValid = {true}/>
       <hr/>
