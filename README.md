@@ -2,7 +2,7 @@
 
 Welcome to my digital workshop! This repository, LakshayWebDev, is a living portfolio that tracks my progress from foundational web concepts to building modern, component-based applications with React.
 
-<p align="center"> <img src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif" alt="coding animation" width="400"/> </p>
+<p align="center"> <img src="https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif" alt="coding animation" width="400"/> </p>
 ✨ Project Showcase (What's Inside?)
 
 Each folder represents a milestone in my learning journey. Here are some highlights:
@@ -41,7 +41,7 @@ Goal	Description	ETA
 Context API / Redux	Advanced state management for larger applications	Q2 2024
 RESTful APIs	Fetching & displaying external API data	Q3 2024
 TypeScript Integration	Add static typing for better error handling & scalability	Q4 2024
-<p align="center"> <img src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="future goals" width="400"/> </p>
+<p align="center"> <img src="https://media.giphy.com/media/3o6Mbc7xYzW2Ed0fna/giphy.gif" alt="future goals animation" width="400"/> </p>
 💻 Tech Stack & Tools
 Category	Tools & Libraries
 Primary Framework	⚛️ React
