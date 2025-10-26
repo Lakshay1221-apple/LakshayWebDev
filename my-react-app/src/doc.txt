@@ -1,0 +1,15 @@
+props = read only properties that are shared between compoenets, a parent component can send data to child component like key = value
+
+condition rendering  = allows you ro control what gets rendered in your application based on certain conditions (show ,hide or change component)
+
+React hook = special function that allows functional components to use react features without  writing class component 
+
+useState() = A React hook that allows the creation of a stateful variable and a setter function to update its value  in the virtual DOM.
+
+onChangee = event handler used primarily with form elements trigger a function every time the value of the ipuput changes
+
+updater function = a function passed as an argument to setState() ususally
+                   ex. setYear(year+1)
+                   allow for safe updates based on the previous state 
+                   used with multiple sate update and asynchronous functions 
+                   good practise to use updater function

@@ -3,24 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Subs</title>
+    <title>PoP Up</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> 
+    <link rel = "stylesheet" href = "pop.css">
 </head>
-<body class="bg[#ffffffr] text-white">
+<body>
     <div class="container">
-        <div class="input-box">
-            <input type = "password" id = "password" placeholder = "password">
-            <button type = "submit"><img src="/web_images/arrowleft.png" alt=""></button>
-            <p id = "message">Password is <span id = "strength"></span></p>
+        <button type = "submit" class = "btn" onclick = "openPopup()">Submit</button>
+        <div class="popup" id = "popup">
+            <img src="/web_images/404-tick.png">
+            <h2>Thank You!</h2>
+            <p>Your Details has been successfully submitted. Thanks!</p>
+            <button type = "button" onclick = "closePopup()">OK</button>
         </div>
     </div>
 
-
-     <script src="index.js"></script>
+     
+    <script src="pop.js"></script>
     
 </body>
 </html>

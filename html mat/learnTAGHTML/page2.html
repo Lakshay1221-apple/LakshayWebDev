@@ -9,7 +9,7 @@
     <hr>
     <h1 style = "color: red">This is Page Two</h1>
 
-    <a href = "https://en.wikipedia.org/wiki/Economic_liberalisation_in_India" title = "wikipedia link for economics reforms" target = "self">
+    <a href = "https://en.wikipedia.org/wiki/Economic_liberalisation_in_India" title = "wikipedia link for economics reforms" target = "_blank">
     
     <!--How to add an image, the image file should be in the same folder of the website, if the website has lot of images use a separate folder for that just add the folder name before the file name.-->
 
@@ -21,7 +21,6 @@
     <br>
     <audio controls autoplay muted loop> <!--This is how you put an audio file in your page-->
         <source src = "/webmaterial/Brave - Mark Karan, Scott Guberman, Angeline Saris, Jeremy Hoenig.mp3"> <!--Different source files if the browser does not support anyone-->
-        <source src = "/webmaterial/Brave - Mark Karan, Scott Guberman, Angeline Saris, Jeremy Hoenig.mp3">
          This Browser Does Not Support HTML5 Audio.</audio>
      
      
@@ -45,8 +44,8 @@
      <p>This is a <ins>inserted</ins> text.</p>
      <p>This is a <del>deleted</del> text.</p>  
      <p>This is a <mark>marked</mark> text.</p>
-     <p>This is a <u>underline</u> text.</p>
-     <p>This is a <strong>underline</strong> text.</p>
+     <p>This is an <u>underline</u> text.</p> <!-- u tag is used to underline text. -->
+     <p>This is a <strong>strong</strong> text.</p> <!-- strong tag is used for important text (displays as bold). -->
      <p>This is a <abbr title = "Hyper text markup language">HTML</abbr> text.</p>
 
      <pre> Lorem ipsum dolor             sit amet consectetur adipisicing elit. Quisquam nobis quibusdam dignissimos aspernatur! Ab nihil, eum totam blanditiis quaerat debitis voluptatum sit doloremque unde. Nihil nisi quis magnam delectus ea! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati facere sit similique ex amet assumenda architecto, eveniet nam consequatur cum animi, a id sed ducimus, neque corrupti ea ipsa alias.</pre>
@@ -93,28 +92,28 @@
     <!--How ot create a table using Html-->
 
     
-    <table bgcolor = "black" width = "700">
-        <thead>
+    <table style="background-color: black; width: 700px; color: white; border-collapse: collapse;">
         <caption> Shop Timing Table</caption>
-        <tr bgcolor = "grey">  <!--Tr tag is used for the table row, bg color is used  to fill color to the table-->
-            <th width = "100">Sunday</th>  <!--Th tag is used for the table head-->
-            <th width = "100">Monday</th> <!--Width of the table-->
-            <th width = "100">Tuesday</th>
-            <th width = "100">Wednesday</th>
-            <th width = "100">Thursday</th>
-            <th width = "100">Friday</th>
-            <th width = "100">Saturday</th>         
+        <thead>
+        <tr style="background-color: grey;">  <!--Tr tag is used for the table row, bg color is used  to fill color to the table-->
+            <th style="width: 100px; padding: 8px; border: 1px solid white;">Sunday</th>  <!--Th tag is used for the table head-->
+            <th style="width: 100px; padding: 8px; border: 1px solid white;">Monday</th> <!--Width of the table-->
+            <th style="width: 100px; padding: 8px; border: 1px solid white;">Tuesday</th>
+            <th style="width: 100px; padding: 8px; border: 1px solid white;">Wednesday</th>
+            <th style="width: 100px; padding: 8px; border: 1px solid white;">Thursday</th>
+            <th style="width: 100px; padding: 8px; border: 1px solid white;">Friday</th>
+            <th style="width: 100px; padding: 8px; border: 1px solid white;">Saturday</th>         
         </tr>
         </thead>
         <tbody>
-        <tr bgcolor = "lightgrey" align="center">
-            <td>Closed</td> <!--Td tag is used for the table data-->
-            <td>9-5</td>
-            <td>9-5</td>
-            <td>9-5</td>
-            <td>9-5</td>
-            <td>9-5</td>
-            <td>Closed</td>
+        <tr style="background-color: lightgrey; color: black; text-align: center;">
+            <td style="padding: 8px; border: 1px solid black;">Closed</td> <!--Td tag is used for the table data-->
+            <td style="padding: 8px; border: 1px solid black;">9-5</td>
+            <td style="padding: 8px; border: 1px solid black;">9-5</td>
+            <td style="padding: 8px; border: 1px solid black;">9-5</td>
+            <td style="padding: 8px; border: 1px solid black;">9-5</td>
+            <td style="padding: 8px; border: 1px solid black;">9-5</td>
+            <td style="padding: 8px; border: 1px solid black;">Closed</td>
         </tr>
         </tbody>
     </table>

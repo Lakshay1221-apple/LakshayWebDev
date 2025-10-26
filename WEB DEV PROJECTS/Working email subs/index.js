@@ -7,7 +7,7 @@
     e.preventDefault()
     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
       .then(response => {
-        meg.innerHTML = "Thank you for Subscribing"
+        msg.innerHTML = "Thank you for Subscribing"
 
       })
       .catch(error => console.error('Error!', error.message))

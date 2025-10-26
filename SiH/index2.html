@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduConnect - Student Learning Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #ffba08;
+            --danger: #f94144;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+        }
+        
+        body {
+            background-color: #f5f7fb;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Login Page */
+        .login-container {
+            display: flex;
+            height: 100vh;
+        }
+        
+        .login-left {
+            flex: 1;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .login-left h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .login-left p {
+            font-size: 1.2rem;
+            max-width: 500px;
+        }
+        
+        .login-right {
+            flex: 1;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .login-form {
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .login-form h2 {
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        .user-type {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .user-type-btn {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .user-type-btn.active {
+            border-color: var(--primary);
+            background-color: rgba(67, 97, 238, 0.1);
+        }
+        
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            width: 100%;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary);
+        }
+        
+        /* Dashboard */
+        .dashboard {
+            display: none;
+        }
+        
+        .header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+        }
+        
+        .sidebar {
+            background-color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            height: fit-content;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+        }
+        
+        .sidebar-menu li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+        }
+        
+        .sidebar-menu i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 1.5rem;
+        }
+        
+        .main-section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        
+        .view-all {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .card {
+            background-color: var(--light);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-header {
+            padding: 1rem;
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .card-body {
+            padding: 1rem;
+        }
+        
+        .card-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: var(--light-gray);
+            border-radius: 4px;
+            margin: 0.75rem 0;
+        }
+        
+        .progress {
+            height: 100%;
+            border-radius: 4px;
+            background-color: var(--success);
+        }
+        
+        .sidebar-right {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .achievement-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .achievement-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--warning);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+        }
+        
+        .mentor-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .mentor-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .badge-primary {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+        }
+        
+        .badge-success {
+            background-color: rgba(76, 201, 240, 0.1);
+            color: var(--success);
+        }
+        
+        /* NCERT Curriculum Section */
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .subject-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .subject-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .subject-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Quiz Section */
+        .quiz-card {
+            background-color: var(--light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .quiz-title {
+            font-weight: 600;
+        }
+        
+        .quiz-details {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .quiz-tag {
+            background-color: var(--light-gray);
+            padding: 0.25rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .login-container {
+                flex-direction: column;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            .subject-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div class="login-container" id="login-page">
+        <div class="login-left">
+            <h1>EduConnect</h1>
+            <p>Empowering students with NCERT curriculum, extracurricular activities, and vocational skills development.</p>
+            <div style="margin-top: 2rem; text-align: left;">
+                <h3>SIH Project Features:</h3>
+                <ul style="list-style: none; margin-top: 1rem;">
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle"></i> NCERT Curriculum</li>
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle"></i> Extracurricular Activities</li>
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle"></i> Vocational Skills</li>
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle"></i> Reward System</li>
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle"></i> Mentorship Program</li>
+                </ul>
+            </div>
+        </div>
+        <div class="login-right">
+            <form class="login-form">
+                <h2>Login to Your Account</h2>
+                
+                <div class="user-type">
+                    <div class="user-type-btn active" id="student-btn">
+                        <i class="fas fa-user-graduate"></i> Student
+                    </div>
+                    <div class="user-type-btn" id="parent-btn">
+                        <i class="fas fa-users"></i> Parent
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password">
+                </div>
+                
+                <button type="button" class="btn btn-primary" id="login-btn">Login</button>
+                
+                <div style="margin-top: 1.5rem; text-align: center;">
+                    <p>Don't have an account? <a href="#" style="color: var(--primary);">Sign up</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Dashboard -->
+    <div class="dashboard" id="dashboard">
+        <header class="header">
+            <div class="container header-content">
+                <div class="logo">EduConnect</div>
+                <div class="user-info">
+                    <div class="user-avatar">RS</div>
+                    <div>Rahul Student</div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="container main-content">
+            <aside class="sidebar">
+                <ul class="sidebar-menu">
+                    <li><a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-book"></i> NCERT Curriculum</a></li>
+                    <li><a href="#"><i class="fas fa-paint-brush"></i> Extracurricular</a></li>
+                    <li><a href="#"><i class="fas fa-tools"></i> Vocational Skills</a></li>
+                    <li><a href="#"><i class="fas fa-question-circle"></i> Quizzes & Tests</a></li>
+                    <li><a href="#"><i class="fas fa-handshake"></i> Mentors</a></li>
+                    <li><a href="#"><i class="fas fa-trophy"></i> Achievements</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </aside>
+            
+            <div class="content">
+                <div class="main-content-area">
+                    <section class="main-section">
+                        <div class="section-header">
+                            <h2 class="section-title">NCERT Curriculum</h2>
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                        <div class="subject-grid">
+                            <div class="subject-card">
+                                <div class="subject-icon">
+                                    <i class="fas fa-calculator"></i>
+                                </div>
+                                <h3>Mathematics</h3>
+                                <p>Class 10</p>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-icon">
+                                    <i class="fas fa-flask"></i>
+                                </div>
+                                <h3>Science</h3>
+                                <p>Class 10</p>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-icon">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <h3>Social Science</h3>
+                                <p>Class 10</p>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-icon">
+                                    <i class="fas fa-language"></i>
+                                </div>
+                                <h3>English</h3>
+                                <p>Class 10</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section class="main-section">
+                        <div class="section-header">
+                            <h2 class="section-title">Extracurricular Activities</h2>
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                        <div class="card-grid">
+                            <div class="card">
+                                <div class="card-header">Sports</div>
+                                <div class="card-body">
+                                    <h3 class="card-title">Basketball Club</h3>
+                                    <p>Practice: Mon & Wed, 4-6 PM</p>
+                                    <span class="badge badge-primary">Active</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">Arts</div>
+                                <div class="card-body">
+                                    <h3 class="card-title">Drawing & Painting</h3>
+                                    <p>Learn various techniques</p>
+                                    <span class="badge badge-primary">Enroll Now</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">Technology</div>
+                                <div class="card-body">
+                                    <h3 class="card-title">Coding Club</h3>
+                                    <p>Python programming basics</p>
+                                    <span class="badge badge-primary">New</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section class="main-section">
+                        <div class="section-header">
+                            <h2 class="section-title">Vocational Skills</h2>
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                        <div class="card-grid">
+                            <div class="card">
+                                <div class="card-header">Technology</div>
+                                <div class="card-body">
+                                    <h3 class="card-title">Web Development</h3>
+                                    <p>HTML, CSS, JavaScript basics</p>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 60%"></div>
+                                    </div>
+                                    <span class="badge badge-primary">In Progress</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">Business</div>
+                                <div class="card-body">
+                                    <h3 class="card-title">Entrepreneurship</h3>
+                                    <p>Starting a small business</p>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 25%"></div>
+                                    </div>
+                                    <span class="badge badge-primary">Started</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">Arts</div>
+                                <div class="card-body">
+                                    <h3 class="card-title">Graphic Design</h3>
+                                    <p>Digital design fundamentals</p>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 100%"></div>
+                                    </div>
+                                    <span class="badge badge-success">Completed</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section class="main-section">
+                        <div class="section-header">
+                            <h2 class="section-title">Upcoming Quizzes & Tests</h2>
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                        <div class="quiz-card">
+                            <div class="quiz-header">
+                                <h3 class="quiz-title">Mathematics - Chapter 5: Arithmetic Progressions</h3>
+                                <div class="quiz-details">
+                                    <span class="quiz-tag">20 Questions</span>
+                                    <span class="quiz-tag">30 Minutes</span>
+                                </div>
+                            </div>
+                            <p>Test your knowledge of arithmetic progressions with this quiz</p>
+                            <div style="margin-top: 1rem;">
+                                <button class="btn btn-primary">Start Quiz</button>
+                            </div>
+                        </div>
+                        <div class="quiz-card">
+                            <div class="quiz-header">
+                                <h3 class="quiz-title">Science - Chapter 6: Life Processes</h3>
+                                <div class="quiz-details">
+                                    <span class="quiz-tag">25 Questions</span>
+                                    <span class="quiz-tag">45 Minutes</span>
+                                </div>
+                            </div>
+                            <p>Test your understanding of life processes in living organisms</p>
+                            <div style="margin-top: 1rem;">
+                                <button class="btn btn-primary">Start Quiz</button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+                <div class="sidebar-right">
+                    <section class="main-section">
+                        <div class="section-header">
+                            <h2 class="section-title">My Mentors</h2>
+                        </div>
+                        <div class="mentor-card">
+                            <div class="mentor-avatar">MR</div>
+                            <div>
+                                <h3>Dr. Maria Rodriguez</h3>
+                                <p>Science Advisor</p>
+                            </div>
+                        </div>
+                        <div class="mentor-card">
+                            <div class="mentor-avatar">JS</div>
+                            <div>
+                                <h3>Prof. James Smith</h3>
+                                <p>Career Counselor</p>
+                            </div>
+                        </div>
+                        <div class="mentor-card">
+                            <div class="mentor-avatar">AK</div>
+                            <div>
+                                <h3>Ms. Amanda Kim</h3>
+                                <p>Math Tutor</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section class="main-section">
+                        <div class="section-header">
+                            <h2 class="section-title">My Achievements</h2>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div>
+                                <h3>Science Quiz Winner</h3>
+                                <p>Scored 95% in Chapter 5 Quiz</p>
+                                <span class="badge badge-success">Awarded</span>
+                            </div>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div>
+                                <h3>Perfect Attendance</h3>
+                                <p>1 Month Perfect Attendance</p>
+                                <span class="badge badge-success">Achieved</span>
+                            </div>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <div>
+                                <h3>Web Development</h3>
+                                <p>Completed Basic HTML & CSS</p>
+                                <span class="badge badge-success">Completed</span>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section class="main-section">
+                        <div class="section-header">
+                            <h2 class="section-title">Reward Points</h2>
+                        </div>
+                        <div style="text-align: center; padding: 1.5rem;">
+                            <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary);">
+                                1,250
+                            </div>
+                            <p>Points earned from quizzes and activities</p>
+                            <div style="margin-top: 1rem;">
+                                <button class="btn btn-primary">Redeem Rewards</button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const loginPage = document.getElementById('login-page');
+        const dashboard = document.getElementById('dashboard');
+        const studentBtn = document.getElementById('student-btn');
+        const parentBtn = document.getElementById('parent-btn');
+        const loginBtn = document.getElementById('login-btn');
+        const logoutBtn = document.getElementById('logout-btn');
+        
+        // Event Listeners
+        studentBtn.addEventListener('click', () => {
+            studentBtn.classList.add('active');
+            parentBtn.classList.remove('active');
+        });
+        
+        parentBtn.addEventListener('click', () => {
+            parentBtn.classList.add('active');
+            studentBtn.classList.remove('active');
+        });
+        
+        loginBtn.addEventListener('click', () => {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (email && password) {
+                loginPage.style.display = 'none';
+                dashboard.style.display = 'block';
+            } else {
+                alert('Please enter both email and password');
+            }
+        });
+        
+        logoutBtn.addEventListener('click', () => {
+            loginPage.style.display = 'flex';
+            dashboard.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
