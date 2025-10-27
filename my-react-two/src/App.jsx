@@ -15,6 +15,9 @@ import { MdOutlinePower } from "react-icons/md";
 import { BsSdCardFill } from "react-icons/bs";
 import { GiLoincloth } from "react-icons/gi";
 import Indec from "./components/Indec.jsx";
+import ExampleOne from "./components/ExampleOne.jsx";
+import List from "./todolist/List.jsx";
+
 
 
 // This is a component definition (which will act as a child when rendered)
@@ -74,15 +77,20 @@ const App = () => {
       <hr/>
       <ProductInfo/>
       <hr/>
-      <UserList/>
+      <UserList />
       <hr/>
-      <Indec/>
+      <List/>
+      <hr/>
+      <Indec friendName={["Lakshay Raj", "Alex"]} />
       <hr/>
       <Password isValid = {true}/>
       <hr/>
       <UserStatus loggedIn = {true} isAdmin = {false}/>
       <hr/>
       <Weather temp = {16}/>
+      <div>
+        <h1><ExampleOne/></h1>
+      </div>
       <hr/>
       <Cart/>
       <hr/>
