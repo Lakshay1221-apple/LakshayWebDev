@@ -17,8 +17,25 @@ import { GiLoincloth } from "react-icons/gi";
 import Indec from "./components/Indec.jsx";
 import ExampleOne from "./components/ExampleOne.jsx";
 import List from "./todolist/List.jsx";
+import CopyInput from "./components/CopyInput.jsx";
+import {useState, useEffect} from "react";
+import BasicEffect from "./components/BasicEffect.jsx";
+import FethData from "./components/FethData.jsx";
+import ComponentA from "./components/ComponentA.jsx"
+import ComponentB from "./components/ComponentB.jsx"
+import { UserProvider } from "./components/UserContext.jsx"; // Import UserProvider
+import {createContext} from "react";
+import UserProfile from "./components/UserProfile.jsx"
+import {useReducer} from "react";
 
+export const Data = createContext();
+export const Data1 = createContext();
 
+// Usereduce hook similar to useState context hook but to handle more complex state, object or state tranisiton that involves multiple sub value
+// We serup useEffect hook to run some code When 1. component render for the (first time) 2. whenever it re-render 3. some data in our component chnaged
+
+const name = "Lakshay Raj"
+const age = 19;
 
 // This is a component definition (which will act as a child when rendered)
 const User = ({ name, age }) => {
@@ -55,8 +72,49 @@ const Cart = () => {
   )
 }
 
+const initialState = {count : 0};
+
+const reducer = (state, action) => {
+
+  switch (action.type) {
+
+    case "increment":
+
+    return{ ...state, count : state.count + 1} ;
+
+    case "decrement":
+
+    return{ ...state, count: state.count - 1};
+    
+    case "reset":
+
+    return{ ...state, count: 0}
+
+    default:
+      return state;
+  }
+
+
+}
+
+
 
 const App = () => {
+
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+
+  const [value, setValue] = useState(0);
+
+  useEffect (() => {
+      if (value > 0) { 
+
+      console.log("call Effect")
+      document.title = `Increment ${value}`
+
+    }
+
+  }, [value]);
 
   return(
     <>
@@ -68,6 +126,15 @@ const App = () => {
       <hr/>
       <JsxRules/>
       <hr/>
+      <UserProvider> {/* UserProfile should be wrapped by UserProvider */}
+        <UserProfile/>
+        </UserProvider>      
+      <hr/>
+      <button onClick = {() =>dispatch({type: "increment"})}>+</button>
+      <button onClick = {() =>dispatch({type: "decrement"})}>-</button>
+      <button onClick = {() =>dispatch({type: "reset"})}>0</button>
+      <h1> Count : {state.count}</h1>
+      <hr/>
       <div className="dynamic-section">
         <h2>How to Embeded Dynamic Content in JSX</h2>
         <Dynamic/>
@@ -75,12 +142,28 @@ const App = () => {
       <hr/>
       <Greeting/>
       <hr/>
+      <CopyInput/>
+      <hr/>
       <ProductInfo/>
       <hr/>
       <UserList />
       <hr/>
+      <FethData/>
+      <hr/>
+      <BasicEffect />
+      <hr/>
+      <h2>{value}</h2>
+      <button onClick = {() => setValue(value + 1)}>Click me</button>
+      <hr/>
       <List/>
       <hr/>
+      <Data.Provider value = {name}>
+        <Data1.Provider value = {age}>
+      <ComponentA/>
+      </Data1.Provider>
+      </Data.Provider>
+      <hr/>
+      {/* <ComponentB/> */}
       <Indec friendName={["Lakshay Raj", "Alex"]} />
       <hr/>
       <Password isValid = {true}/>

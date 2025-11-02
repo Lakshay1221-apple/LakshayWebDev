@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-// --- Styles ---
+
 const containerStyle = {
     maxWidth: '600px',
     margin: '40px auto',
